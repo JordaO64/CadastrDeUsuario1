@@ -1,0 +1,158 @@
+package Usuario;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.BorderLayout;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Tela {
+
+	private JFrame frame;
+	private JTextField TextoEstado;
+	private JTextField TextoCidade;
+	private JTextField TextoEndereço;
+	
+	ControlaDados cv=new ControlaDados();
+	private JTextField TextoCpf_3;
+	private JTextField TextoCnpj_4;
+	protected JLabel tfdEstado;
+	protected JLabel tfdCidade;
+	protected JLabel tfdEndereço;
+	protected JLabel tfdCpf;
+	protected JLabel tfdCnpj;
+	protected JLabel tfdNome;
+	protected JLabel tfdMarca;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Tela window = new Tela();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public Tela() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 637, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		JLabel btnsair_2 = new JLabel("  ");
+		btnsair_2.setBounds(36, 0, 631, 261);
+		frame.getContentPane().add(btnsair_2);
+		
+		JLabel btnEstado = new JLabel("Estado");
+		btnEstado.setBounds(10, 11, 46, 14);
+		frame.getContentPane().add(btnEstado);
+		
+		JLabel btnCidadel_1 = new JLabel("Cidade");
+		btnCidadel_1.setBounds(10, 54, 46, 14);
+		frame.getContentPane().add(btnCidadel_1);
+		
+		JLabel btnEndereçol_3 = new JLabel("Endereço");
+		btnEndereçol_3.setBounds(10, 104, 46, 14);
+		frame.getContentPane().add(btnEndereçol_3);
+		
+		TextoEstado = new JTextField();
+		TextoEstado.setBounds(66, 8, 232, 20);
+		frame.getContentPane().add(TextoEstado);
+		TextoEstado.setColumns(10);
+		
+		TextoCidade = new JTextField();
+		TextoCidade.setBounds(66, 51, 124, 20);
+		frame.getContentPane().add(TextoCidade);
+		TextoCidade.setColumns(10);
+		
+		TextoEndereço = new JTextField();
+		TextoEndereço.setBounds(66, 101, 86, 20);
+		frame.getContentPane().add(TextoEndereço);
+		TextoEndereço.setColumns(10);
+		
+		JButton btnNewButton = new JButton("Confirmar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			PrimeiroCadastro PrimeiroCadadastro = new PrimeiroCadastro();
+				PrimeiroCadadastro.setEstado(tfdEstado.getText());
+				PrimeiroCadadastro.setCidade(tfdCidade.getText());
+				PrimeiroCadadastro.setEndereço(tfdEndereço.getText());
+				PrimeiroCadadastro.setCpf(tfdCpf.getText());
+				PrimeiroCadadastro.setCnpj(tfdCnpj.getText());
+				
+				if (cv.salvar(PrimeiroCadadastro)) {
+					JOptionPane.showMessageDialog(null, "Cadastro de usuario realizado com sucesso!");
+				
+				tfdEstado.setText("");
+				tfdCidade.setText("");
+				tfdEndereço.setText("");
+				tfdCpf.setText("");
+				tfdCnpj.setText("");
+				tfdEstado.setText("");
+				tfdEstado.requestFocus();
+				}			
+				
+		else {
+				JOptionPane.showMessageDialog(null,"Cadastro não realizado ");
+			}
+			}
+		});
+		btnNewButton.setBounds(511, 227, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Registros");
+		btnNewButton_1.setBounds(400, 227, 89, 23);
+		frame.getContentPane().add(btnNewButton_1);
+		
+		JButton btnNewButton_2 = new JButton("Sair");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		btnNewButton_2.setBounds(286, 227, 89, 23);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JLabel btnCnpj_2 = new JLabel("CPF");
+		btnCnpj_2.setBounds(329, 11, 46, 14);
+		frame.getContentPane().add(btnCnpj_2);
+		
+		JLabel btnCnpj_4 = new JLabel("Cnpj");
+		btnCnpj_4.setBounds(329, 54, 46, 14);
+		frame.getContentPane().add(btnCnpj_4);
+		
+		TextoCpf_3 = new JTextField();
+		TextoCpf_3.setBounds(367, 8, 160, 20);
+		frame.getContentPane().add(TextoCpf_3);
+		TextoCpf_3.setColumns(10);
+		
+		TextoCnpj_4 = new JTextField();
+		TextoCnpj_4.setBounds(367, 51, 160, 20);
+		frame.getContentPane().add(TextoCnpj_4);
+		TextoCnpj_4.setColumns(10);
+		
+	}
+}

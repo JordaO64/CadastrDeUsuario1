@@ -1,0 +1,20 @@
+package Usuario;
+
+import java.util.ArrayList;
+
+public class ControlaDados {
+	ArrayList<PrimeiroCadastro> PrimeiroCadastro = new ArrayList<>();
+
+	public boolean salvar(PrimeiroCadastro v) {
+	   if (v !=null) {
+		   PrimeiroCadastro.add(v);
+		   return true;
+	   } 
+	   else {
+		   return false;
+	   }
+	}
+	public ArrayList<PrimeiroCadastro> retornarTodos() {
+		return PrimeiroCadastro;
+	}
+}
